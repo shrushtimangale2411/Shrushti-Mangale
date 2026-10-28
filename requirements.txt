@@ -1,0 +1,6 @@
+What each library does:
+numpy : Numerical calculations.
+matplotlib : Graphs of drug-release profiles.
+scipy : Scientific calculations and release-kinetics modelling.
+pandas : Organizing and analyzing experimental data.
+jupyter : Interactive notebooks for research and visualization.
