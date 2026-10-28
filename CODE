@@ -1,0 +1,39 @@
+# Developing a Natural Hydrogel for Controlled Drug Delivery
+# Project: Bioengineering
+# Purpose: Simulate and visualize drug-release kinetics
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Simulation parameters
+time = np.linspace(0, 24, 100)  # Time in hours
+release_rate = 20               # Illustrative release constant
+total_drug = 100                # Normalized drug amount (%)
+
+# Higuchi model: cumulative release is proportional to sqrt(time)
+drug_release = release_rate * np.sqrt(time)
+
+# Limit release to 100% of the loaded compound
+drug_release = np.clip(drug_release, 0, total_drug)
+
+# Plot the simulated release profile
+plt.figure(figsize=(9, 5))
+plt.plot(time, drug_release, label="Hydrogel Drug Release")
+
+plt.xlabel("Time (hours)")
+plt.ylabel("Cumulative Drug Released (%)")
+plt.title("Controlled Drug Release from a Natural Hydrogel")
+plt.ylim(0, 105)
+plt.grid(True)
+plt.legend()
+
+plt.tight_layout()
+plt.show()
+
+# Display selected simulation results
+print("Time (hours) | Drug Released (%)")
+print("-" * 32)
+
+for t in [0, 4, 8, 12, 16, 20, 24]:
+    release = min(release_rate * np.sqrt(t), total_drug)
+    print(f"{t:12} | {release:17.2f}")
